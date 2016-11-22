@@ -45,8 +45,9 @@ exports.readTasks = function(req, res){
 
     var status = req.query.active;
     console.log(status);
+    console.log(Boolean(status));
     if (typeof status !== 'undefined') {
-        userTasks = _.filter(userTasks, { "isActive": false });
+        userTasks = _.filter(userTasks, { "isActive": Boolean(status) });
     }
 
     res.status(200);
