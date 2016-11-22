@@ -44,7 +44,7 @@ exports.readTasks = function(req, res){
     var userTasks = _.filter(state.tasks, { "userId": user.id });
 
     var status = req.query.active;
-    if (status) {
+    if (typeof status !== 'undefined') {
         userTasks = _.filter(userTasks, { "isActive": Boolean(status) });
     }
 
