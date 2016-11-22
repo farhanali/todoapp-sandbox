@@ -44,6 +44,7 @@ exports.readTasks = function(req, res){
     var userTasks = _.filter(state.tasks, { "userId": user.id });
 
     var status = req.query.active;
+    console.log(status);
     if (status) {
         userTasks = _.filter(userTasks, { "isActive": status });
     }
