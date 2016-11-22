@@ -1,4 +1,4 @@
-Documentation
+Todo MVP Sandbox
 ====================
 
-Edit the Readme.md file and add doco about your sandbox.
+A sandbox for MVP architecture demonstration in mobile
