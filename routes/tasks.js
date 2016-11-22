@@ -27,7 +27,8 @@ exports.createTask = function(req, res) {
 /*
  * GET /tasks
  *
- * To read all tasks.
+ * To read all tasks, if query parameter "active=true/false",
+ * then return appropriate tasks.
  */
 exports.readTasks = function(req, res){
     res.set('Content-Type', 'application/json');
@@ -40,9 +41,12 @@ exports.readTasks = function(req, res){
 
     state.tasks = state.tasks || [];
 
-    var userTasks = _.filter(state.tasks, {
-        "userId": user.id
-    });
+    var userTasks = _.filter(state.tasks, { "userId": user.id });
+
+    var status = req.query.active;
+    if (status) {
+        userTasks = _.filter(userTasks, { "isActive": status });
+    }
 
     res.status(200);
     res.json(userTasks);
